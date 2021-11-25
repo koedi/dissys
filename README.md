@@ -28,3 +28,19 @@ AP Kari: setup Github
 
 Next meeting Tue 16.11. 20:00 @ Zoom (same link)
 
+## Meeting notes 16.11.2021
+Present: Kari, Ilkka, Ossi
+
+Topic: Online Store - we sell bananas
+Nodes:
+- Client - orders bananas
+- Service handler - handles client orders
+- Warehouse - contains bananas
+- Shopping basket - shared (state) between nodes
+
+Next steps:
+- Design plan - google doc (Ilkka to create)
+- Everyone to start filling
+
+
+Next meeting Sunday 21.11.2021 14:00 @ Zoom
