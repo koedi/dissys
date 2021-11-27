@@ -44,3 +44,27 @@ Next steps:
 
 
 Next meeting Sunday 21.11.2021 14:00 @ Zoom
+
+## Meeting notes 27.11.2021
+Present: Lauri, Ilkka, Ossi
+
+Topic: What everyone has done
+
+Lauri:
+- Master node initial implementation
+
+Ossi:
+- Bananashop api initial implementation
+
+Ilkka:
+- Tested out ZooKeeper
+
+Next steps:
+- Lauri will refactor his code and push to github on around Monday
+- Ilkka will test out ZooKeeper with the Bananashop API
+- Everyone can test out different things, let's meet next Wednesday
+
+
+Next meeting Wednesday 1.12.2021 18:00 @ Zoom
+
+
