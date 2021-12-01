@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+// Proto package (different from Java package) to avoid name collisions with other proto definitions
+package distributed.shop;
+
+// Java package name
+option java_package = "model.proto";
+
+// Java class that contains all the below defined message types
+option java_outer_classname = "ShopModel";
+
+// request from front end to coordinator
+message Request {
+    required int64 purchase_query = 1;
+}
+
+// response from coordinator to frontend
+message Response {
+	
+	required int64 items_purchased = 1;
+	required int64 items_available = 2;
+
+}
