@@ -14,10 +14,14 @@ message Request {
     required int64 purchase_query = 1;
 }
 
+message InfoRequest {
+    required string status = 1;
+}
+
 // response from coordinator to frontend
 message Response {
 	
-	required int64 items_purchased = 1;
-	required int64 items_available = 2;
-
+	required int64 items_available = 1;
+	required int64 items_purchased = 2;
+	
 }

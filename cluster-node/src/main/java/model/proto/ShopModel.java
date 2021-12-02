@@ -553,31 +553,644 @@ public final class ShopModel {
 
   }
 
+  public interface InfoRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:distributed.shop.InfoRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string status = 1;</code>
+     * @return Whether the status field is set.
+     */
+    boolean hasStatus();
+    /**
+     * <code>required string status = 1;</code>
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>required string status = 1;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+  }
+  /**
+   * Protobuf type {@code distributed.shop.InfoRequest}
+   */
+  public static final class InfoRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:distributed.shop.InfoRequest)
+      InfoRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InfoRequest.newBuilder() to construct.
+    private InfoRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InfoRequest() {
+      status_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InfoRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InfoRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              status_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return model.proto.ShopModel.internal_static_distributed_shop_InfoRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return model.proto.ShopModel.internal_static_distributed_shop_InfoRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              model.proto.ShopModel.InfoRequest.class, model.proto.ShopModel.InfoRequest.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private volatile java.lang.Object status_;
+    /**
+     * <code>required string status = 1;</code>
+     * @return Whether the status field is set.
+     */
+    @java.lang.Override
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required string status = 1;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          status_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string status = 1;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasStatus()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, status_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, status_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof model.proto.ShopModel.InfoRequest)) {
+        return super.equals(obj);
+      }
+      model.proto.ShopModel.InfoRequest other = (model.proto.ShopModel.InfoRequest) obj;
+
+      if (hasStatus() != other.hasStatus()) return false;
+      if (hasStatus()) {
+        if (!getStatus()
+            .equals(other.getStatus())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStatus()) {
+        hash = (37 * hash) + STATUS_FIELD_NUMBER;
+        hash = (53 * hash) + getStatus().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static model.proto.ShopModel.InfoRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static model.proto.ShopModel.InfoRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static model.proto.ShopModel.InfoRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static model.proto.ShopModel.InfoRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static model.proto.ShopModel.InfoRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static model.proto.ShopModel.InfoRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static model.proto.ShopModel.InfoRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static model.proto.ShopModel.InfoRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static model.proto.ShopModel.InfoRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static model.proto.ShopModel.InfoRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static model.proto.ShopModel.InfoRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static model.proto.ShopModel.InfoRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(model.proto.ShopModel.InfoRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code distributed.shop.InfoRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:distributed.shop.InfoRequest)
+        model.proto.ShopModel.InfoRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return model.proto.ShopModel.internal_static_distributed_shop_InfoRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return model.proto.ShopModel.internal_static_distributed_shop_InfoRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                model.proto.ShopModel.InfoRequest.class, model.proto.ShopModel.InfoRequest.Builder.class);
+      }
+
+      // Construct using model.proto.ShopModel.InfoRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        status_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return model.proto.ShopModel.internal_static_distributed_shop_InfoRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public model.proto.ShopModel.InfoRequest getDefaultInstanceForType() {
+        return model.proto.ShopModel.InfoRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public model.proto.ShopModel.InfoRequest build() {
+        model.proto.ShopModel.InfoRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public model.proto.ShopModel.InfoRequest buildPartial() {
+        model.proto.ShopModel.InfoRequest result = new model.proto.ShopModel.InfoRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.status_ = status_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof model.proto.ShopModel.InfoRequest) {
+          return mergeFrom((model.proto.ShopModel.InfoRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(model.proto.ShopModel.InfoRequest other) {
+        if (other == model.proto.ShopModel.InfoRequest.getDefaultInstance()) return this;
+        if (other.hasStatus()) {
+          bitField0_ |= 0x00000001;
+          status_ = other.status_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasStatus()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        model.proto.ShopModel.InfoRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (model.proto.ShopModel.InfoRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>required string status = 1;</code>
+       * @return Whether the status field is set.
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required string status = 1;</code>
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            status_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string status = 1;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string status = 1;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string status = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string status = 1;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:distributed.shop.InfoRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:distributed.shop.InfoRequest)
+    private static final model.proto.ShopModel.InfoRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new model.proto.ShopModel.InfoRequest();
+    }
+
+    public static model.proto.ShopModel.InfoRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<InfoRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InfoRequest>() {
+      @java.lang.Override
+      public InfoRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InfoRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InfoRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InfoRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public model.proto.ShopModel.InfoRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:distributed.shop.Response)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int64 items_purchased = 1;</code>
-     * @return Whether the itemsPurchased field is set.
-     */
-    boolean hasItemsPurchased();
-    /**
-     * <code>required int64 items_purchased = 1;</code>
-     * @return The itemsPurchased.
-     */
-    long getItemsPurchased();
-
-    /**
-     * <code>required int64 items_available = 2;</code>
+     * <code>required int64 items_available = 1;</code>
      * @return Whether the itemsAvailable field is set.
      */
     boolean hasItemsAvailable();
     /**
-     * <code>required int64 items_available = 2;</code>
+     * <code>required int64 items_available = 1;</code>
      * @return The itemsAvailable.
      */
     long getItemsAvailable();
+
+    /**
+     * <code>required int64 items_purchased = 2;</code>
+     * @return Whether the itemsPurchased field is set.
+     */
+    boolean hasItemsPurchased();
+    /**
+     * <code>required int64 items_purchased = 2;</code>
+     * @return The itemsPurchased.
+     */
+    long getItemsPurchased();
   }
   /**
    * <pre>
@@ -631,12 +1244,12 @@ public final class ShopModel {
               break;
             case 8: {
               bitField0_ |= 0x00000001;
-              itemsPurchased_ = input.readInt64();
+              itemsAvailable_ = input.readInt64();
               break;
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              itemsAvailable_ = input.readInt64();
+              itemsPurchased_ = input.readInt64();
               break;
             }
             default: {
@@ -672,42 +1285,42 @@ public final class ShopModel {
     }
 
     private int bitField0_;
-    public static final int ITEMS_PURCHASED_FIELD_NUMBER = 1;
-    private long itemsPurchased_;
-    /**
-     * <code>required int64 items_purchased = 1;</code>
-     * @return Whether the itemsPurchased field is set.
-     */
-    @java.lang.Override
-    public boolean hasItemsPurchased() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required int64 items_purchased = 1;</code>
-     * @return The itemsPurchased.
-     */
-    @java.lang.Override
-    public long getItemsPurchased() {
-      return itemsPurchased_;
-    }
-
-    public static final int ITEMS_AVAILABLE_FIELD_NUMBER = 2;
+    public static final int ITEMS_AVAILABLE_FIELD_NUMBER = 1;
     private long itemsAvailable_;
     /**
-     * <code>required int64 items_available = 2;</code>
+     * <code>required int64 items_available = 1;</code>
      * @return Whether the itemsAvailable field is set.
      */
     @java.lang.Override
     public boolean hasItemsAvailable() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>required int64 items_available = 2;</code>
+     * <code>required int64 items_available = 1;</code>
      * @return The itemsAvailable.
      */
     @java.lang.Override
     public long getItemsAvailable() {
       return itemsAvailable_;
+    }
+
+    public static final int ITEMS_PURCHASED_FIELD_NUMBER = 2;
+    private long itemsPurchased_;
+    /**
+     * <code>required int64 items_purchased = 2;</code>
+     * @return Whether the itemsPurchased field is set.
+     */
+    @java.lang.Override
+    public boolean hasItemsPurchased() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required int64 items_purchased = 2;</code>
+     * @return The itemsPurchased.
+     */
+    @java.lang.Override
+    public long getItemsPurchased() {
+      return itemsPurchased_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -717,11 +1330,11 @@ public final class ShopModel {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasItemsPurchased()) {
+      if (!hasItemsAvailable()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasItemsAvailable()) {
+      if (!hasItemsPurchased()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -733,10 +1346,10 @@ public final class ShopModel {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt64(1, itemsPurchased_);
+        output.writeInt64(1, itemsAvailable_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt64(2, itemsAvailable_);
+        output.writeInt64(2, itemsPurchased_);
       }
       unknownFields.writeTo(output);
     }
@@ -749,11 +1362,11 @@ public final class ShopModel {
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, itemsPurchased_);
+          .computeInt64Size(1, itemsAvailable_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, itemsAvailable_);
+          .computeInt64Size(2, itemsPurchased_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -770,15 +1383,15 @@ public final class ShopModel {
       }
       model.proto.ShopModel.Response other = (model.proto.ShopModel.Response) obj;
 
-      if (hasItemsPurchased() != other.hasItemsPurchased()) return false;
-      if (hasItemsPurchased()) {
-        if (getItemsPurchased()
-            != other.getItemsPurchased()) return false;
-      }
       if (hasItemsAvailable() != other.hasItemsAvailable()) return false;
       if (hasItemsAvailable()) {
         if (getItemsAvailable()
             != other.getItemsAvailable()) return false;
+      }
+      if (hasItemsPurchased() != other.hasItemsPurchased()) return false;
+      if (hasItemsPurchased()) {
+        if (getItemsPurchased()
+            != other.getItemsPurchased()) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -791,15 +1404,15 @@ public final class ShopModel {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasItemsPurchased()) {
-        hash = (37 * hash) + ITEMS_PURCHASED_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getItemsPurchased());
-      }
       if (hasItemsAvailable()) {
         hash = (37 * hash) + ITEMS_AVAILABLE_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
             getItemsAvailable());
+      }
+      if (hasItemsPurchased()) {
+        hash = (37 * hash) + ITEMS_PURCHASED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getItemsPurchased());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -938,9 +1551,9 @@ public final class ShopModel {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        itemsPurchased_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
         itemsAvailable_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        itemsPurchased_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -971,11 +1584,11 @@ public final class ShopModel {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.itemsPurchased_ = itemsPurchased_;
+          result.itemsAvailable_ = itemsAvailable_;
           to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.itemsAvailable_ = itemsAvailable_;
+          result.itemsPurchased_ = itemsPurchased_;
           to_bitField0_ |= 0x00000002;
         }
         result.bitField0_ = to_bitField0_;
@@ -1027,11 +1640,11 @@ public final class ShopModel {
 
       public Builder mergeFrom(model.proto.ShopModel.Response other) {
         if (other == model.proto.ShopModel.Response.getDefaultInstance()) return this;
-        if (other.hasItemsPurchased()) {
-          setItemsPurchased(other.getItemsPurchased());
-        }
         if (other.hasItemsAvailable()) {
           setItemsAvailable(other.getItemsAvailable());
+        }
+        if (other.hasItemsPurchased()) {
+          setItemsPurchased(other.getItemsPurchased());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1040,10 +1653,10 @@ public final class ShopModel {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasItemsPurchased()) {
+        if (!hasItemsAvailable()) {
           return false;
         }
-        if (!hasItemsAvailable()) {
+        if (!hasItemsPurchased()) {
           return false;
         }
         return true;
@@ -1069,56 +1682,17 @@ public final class ShopModel {
       }
       private int bitField0_;
 
-      private long itemsPurchased_ ;
-      /**
-       * <code>required int64 items_purchased = 1;</code>
-       * @return Whether the itemsPurchased field is set.
-       */
-      @java.lang.Override
-      public boolean hasItemsPurchased() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int64 items_purchased = 1;</code>
-       * @return The itemsPurchased.
-       */
-      @java.lang.Override
-      public long getItemsPurchased() {
-        return itemsPurchased_;
-      }
-      /**
-       * <code>required int64 items_purchased = 1;</code>
-       * @param value The itemsPurchased to set.
-       * @return This builder for chaining.
-       */
-      public Builder setItemsPurchased(long value) {
-        bitField0_ |= 0x00000001;
-        itemsPurchased_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 items_purchased = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearItemsPurchased() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        itemsPurchased_ = 0L;
-        onChanged();
-        return this;
-      }
-
       private long itemsAvailable_ ;
       /**
-       * <code>required int64 items_available = 2;</code>
+       * <code>required int64 items_available = 1;</code>
        * @return Whether the itemsAvailable field is set.
        */
       @java.lang.Override
       public boolean hasItemsAvailable() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>required int64 items_available = 2;</code>
+       * <code>required int64 items_available = 1;</code>
        * @return The itemsAvailable.
        */
       @java.lang.Override
@@ -1126,23 +1700,62 @@ public final class ShopModel {
         return itemsAvailable_;
       }
       /**
-       * <code>required int64 items_available = 2;</code>
+       * <code>required int64 items_available = 1;</code>
        * @param value The itemsAvailable to set.
        * @return This builder for chaining.
        */
       public Builder setItemsAvailable(long value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         itemsAvailable_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int64 items_available = 2;</code>
+       * <code>required int64 items_available = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearItemsAvailable() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         itemsAvailable_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long itemsPurchased_ ;
+      /**
+       * <code>required int64 items_purchased = 2;</code>
+       * @return Whether the itemsPurchased field is set.
+       */
+      @java.lang.Override
+      public boolean hasItemsPurchased() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required int64 items_purchased = 2;</code>
+       * @return The itemsPurchased.
+       */
+      @java.lang.Override
+      public long getItemsPurchased() {
+        return itemsPurchased_;
+      }
+      /**
+       * <code>required int64 items_purchased = 2;</code>
+       * @param value The itemsPurchased to set.
+       * @return This builder for chaining.
+       */
+      public Builder setItemsPurchased(long value) {
+        bitField0_ |= 0x00000002;
+        itemsPurchased_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 items_purchased = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearItemsPurchased() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        itemsPurchased_ = 0L;
         onChanged();
         return this;
       }
@@ -1205,6 +1818,11 @@ public final class ShopModel {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_distributed_shop_Request_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_distributed_shop_InfoRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_distributed_shop_InfoRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_distributed_shop_Response_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -1220,9 +1838,10 @@ public final class ShopModel {
     java.lang.String[] descriptorData = {
       "\n3src/main/java/model/proto/shop_cluster" +
       "_protos.proto\022\020distributed.shop\"!\n\007Reque" +
-      "st\022\026\n\016purchase_query\030\001 \002(\003\"<\n\010Response\022\027" +
-      "\n\017items_purchased\030\001 \002(\003\022\027\n\017items_availab" +
-      "le\030\002 \002(\003B\030\n\013model.protoB\tShopModel"
+      "st\022\026\n\016purchase_query\030\001 \002(\003\"\035\n\013InfoReques" +
+      "t\022\016\n\006status\030\001 \002(\t\"<\n\010Response\022\027\n\017items_a" +
+      "vailable\030\001 \002(\003\022\027\n\017items_purchased\030\002 \002(\003B" +
+      "\030\n\013model.protoB\tShopModel"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1234,12 +1853,18 @@ public final class ShopModel {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_distributed_shop_Request_descriptor,
         new java.lang.String[] { "PurchaseQuery", });
-    internal_static_distributed_shop_Response_descriptor =
+    internal_static_distributed_shop_InfoRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_distributed_shop_InfoRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_distributed_shop_InfoRequest_descriptor,
+        new java.lang.String[] { "Status", });
+    internal_static_distributed_shop_Response_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_distributed_shop_Response_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_distributed_shop_Response_descriptor,
-        new java.lang.String[] { "ItemsPurchased", "ItemsAvailable", });
+        new java.lang.String[] { "ItemsAvailable", "ItemsPurchased", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

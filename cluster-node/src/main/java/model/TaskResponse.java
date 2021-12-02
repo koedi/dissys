@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class Result implements Serializable {
+public class TaskResponse implements Serializable {
     private long itemsPurchased;
     private long itemsAvailable;
     

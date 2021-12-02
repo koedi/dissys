@@ -1,7 +1,9 @@
 package networking;
 
 public interface OnRequestCallback {
-    byte[] handleRequest(byte[] requestPayload);
+    byte[] handleTaskRequest(byte[] requestPayload);
+    byte[] handleInfoRequest(byte[] requestPayload);
 
     String getEndpoint();
+    String getStatusEndpoint();
 }

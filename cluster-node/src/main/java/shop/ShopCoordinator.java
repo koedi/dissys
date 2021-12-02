@@ -10,15 +10,18 @@ import org.apache.zookeeper.KeeperException;
 import com.google.protobuf.InvalidProtocolBufferException;
 
 import cluster.management.ServiceRegistry;
-import model.Result;
+import model.TaskResponse;
+import model.StatusRequest;
+import model.StatusResponse;
 import model.SerializationUtils;
-import model.Task;
+import model.TaskRequest;
 import model.proto.ShopModel;
 import networking.OnRequestCallback;
 import networking.WebClient;
 
 public class ShopCoordinator implements OnRequestCallback {
     private static final String ENDPOINT = "/shop";
+    private static final String STATUS_ENDPOINT = "/info";
     private final ServiceRegistry workersServiceRegistry;
     private final WebClient client;
     private final Random random;
@@ -29,7 +32,7 @@ public class ShopCoordinator implements OnRequestCallback {
         this.random = new Random();
     }
 
-    public byte[] handleRequest(byte[] requestPayload) {
+    public byte[] handleTaskRequest(byte[] requestPayload) {
         try {
             ShopModel.Request request = ShopModel.Request.parseFrom(requestPayload);
             ShopModel.Response response = createResponse(request);
@@ -40,55 +43,99 @@ public class ShopCoordinator implements OnRequestCallback {
             return ShopModel.Response.getDefaultInstance().toByteArray();
         }
     }
-
+    
     private ShopModel.Response createResponse(ShopModel.Request request) throws KeeperException, InterruptedException {
         ShopModel.Response.Builder response = ShopModel.Response.newBuilder();
 
-        System.out.println("Received purchase query: " + request.getPurchaseQuery());
+        System.out.println(String.format("Received purchase query for %d items", request.getPurchaseQuery()));
 
-        long purchaseQuery = request.getPurchaseQuery();
-        
-        List<String> workers = workersServiceRegistry.getAllServiceAddresses();
+        String worker = this.selectWorker();
 
-        if (workers.isEmpty()) {
+        if (worker == null) {
             System.out.println("No search workers currently available");
             return response.build();
         }
-
-        Task task = createTask(purchaseQuery);
-        Result results = sendTasksToWorkers(workers, task);
-
+    	
+        this.checkWorkerStatus(worker);
+        
+        long purchaseQuery = request.getPurchaseQuery();
+        TaskRequest task = createTask(purchaseQuery);
+        TaskResponse results = sendTaskToWorker(worker, task);
+        
         response
-        	.setItemsAvailable(results.getItemsAvailable())
-        	.setItemsPurchased(results.getItemsPurchased());
+        	.setItemsPurchased(results.getItemsPurchased())
+        	.setItemsAvailable(results.getItemsAvailable());
 
         return response.build();
     }
 
-    private Result sendTasksToWorkers(List<String> workers, Task task) {
-        CompletableFuture<Result> future = new CompletableFuture<>();
-        
-        int randomIndex = random.nextInt(workers.size());
-        String worker = workers.get(randomIndex);
-        
-        byte[] payload = SerializationUtils.serialize(task);
-        future = client.sendTask(worker, payload);
+    private String selectWorker() throws KeeperException, InterruptedException {
+        List<String> workers = workersServiceRegistry.getAllServiceAddresses();
 
-        Result result = new Result();
+        if (workers.isEmpty()) {
+            return null;
+        }
+        
+    	int randomIndex = random.nextInt(workers.size());
+        String worker = workers.get(randomIndex);
+        return worker;
+    }
+    
+    private String checkWorkerStatus(String worker) {
+    	CompletableFuture<StatusResponse> infoFuture = new CompletableFuture<>();
+    	
+    	StatusRequest info = new StatusRequest("ruok");
+        byte[] infoPayload = SerializationUtils.serialize(info);
+        
+        infoFuture = client.requestInfo(worker + "/info", infoPayload);
+        
+        StatusResponse result = new StatusResponse();
         try {
-            result = future.get();
+            result = infoFuture.get();
+        } catch (InterruptedException | ExecutionException e) {
+        	System.out.println(e.getMessage());
+        }
+
+        System.out.println(result.getStatus());
+        return result.getStatus();
+    }
+    
+    private TaskResponse sendTaskToWorker(String worker, TaskRequest task) {
+        CompletableFuture<TaskResponse> taskFuture = new CompletableFuture<>();
+
+        byte[] payload = SerializationUtils.serialize(task);
+        taskFuture = client.sendTask(worker, payload);
+
+        TaskResponse result = new TaskResponse();
+        try {
+            result = taskFuture.get();
         } catch (InterruptedException | ExecutionException e) {
         }
 
         return result;
     }
 
-    public Task createTask(long purchasedItems) {
-    	return new Task(purchasedItems);
+    public TaskRequest createTask(long purchasedItems) {
+    	return new TaskRequest(purchasedItems);
     }
-
+    
+    public byte[] handleInfoRequest(byte[] requestPayload) {
+    	StatusRequest info = (StatusRequest) SerializationUtils.deserialize(requestPayload);
+        StatusResponse result = new StatusResponse();
+        if (info.getStatus().equals("ruok")) {
+        	result.setStatus("imok");
+        }
+        return SerializationUtils.serialize(result);
+    }
+    
     @Override
     public String getEndpoint() {
         return ENDPOINT;
     }
+    
+    @Override
+    public String getStatusEndpoint() {
+        return STATUS_ENDPOINT;
+    }
+
 }

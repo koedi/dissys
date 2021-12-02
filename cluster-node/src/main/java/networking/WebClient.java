@@ -1,13 +1,14 @@
 package networking;
 
-import model.Result;
-import model.SerializationUtils;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
+
+import model.StatusResponse;
+import model.SerializationUtils;
+import model.TaskResponse;
 
 public class WebClient {
     private HttpClient client;
@@ -18,7 +19,7 @@ public class WebClient {
                 .build();
     }
 
-    public CompletableFuture<Result> sendTask(String url, byte[] requestPayload) {
+    public CompletableFuture<TaskResponse> sendTask(String url, byte[] requestPayload) {
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofByteArray(requestPayload))
                 .uri(URI.create(url))
@@ -26,6 +27,17 @@ public class WebClient {
 
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofByteArray())
                 .thenApply(HttpResponse::body)
-                .thenApply(responseBody -> (Result) SerializationUtils.deserialize(responseBody));
+                .thenApply(responseBody -> (TaskResponse) SerializationUtils.deserialize(responseBody));
+    }
+    
+    public CompletableFuture<StatusResponse> requestInfo(String url, byte[] requestPayload) {
+        HttpRequest request = HttpRequest.newBuilder()
+        		.POST(HttpRequest.BodyPublishers.ofByteArray(requestPayload))
+                .uri(URI.create(url))
+                .build();
+
+        return client.sendAsync(request, HttpResponse.BodyHandlers.ofByteArray())
+                .thenApply(HttpResponse::body)
+                .thenApply(responseBody -> (StatusResponse) SerializationUtils.deserialize(responseBody));
     }
 }

@@ -2,10 +2,10 @@ package model;
 
 import java.io.Serializable;
 
-public class Task implements Serializable {
+public class TaskRequest implements Serializable {
 	private long itemsPurchased;
 
-	public Task(long itemsPurchased) {
+	public TaskRequest(long itemsPurchased) {
 		this.itemsPurchased = itemsPurchased;
 	}
 
