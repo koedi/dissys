@@ -47,7 +47,7 @@ public class ShopCoordinator implements OnRequestCallback {
     private ShopModel.Response createResponse(ShopModel.Request request) throws KeeperException, InterruptedException {
         ShopModel.Response.Builder response = ShopModel.Response.newBuilder();
 
-        System.out.println(String.format("Received purchase query for %d items", request.getPurchaseQuery()));
+        System.out.println(String.format("Coordinator received order for %d items", request.getPurchaseQuery()));
 
         String worker = this.selectWorker();
 
@@ -56,8 +56,6 @@ public class ShopCoordinator implements OnRequestCallback {
             return response.build();
         }
     	
-        this.checkWorkerStatus(worker);
-        
         long purchaseQuery = request.getPurchaseQuery();
         TaskRequest task = createTask(purchaseQuery);
         TaskResponse results = sendTaskToWorker(worker, task);

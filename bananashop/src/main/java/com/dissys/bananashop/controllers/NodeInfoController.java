@@ -5,9 +5,9 @@ package com.dissys.bananashop.controllers;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.dissys.bananashop.data.Bananas;
 import com.dissys.bananashop.data.Node;
 import com.dissys.bananashop.data.NodeInfo;
+import com.dissys.bananashop.model.Bananas;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

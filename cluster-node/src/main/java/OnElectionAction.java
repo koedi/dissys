@@ -49,7 +49,7 @@ public class OnElectionAction implements OnElectionCallback {
 
     @Override
     public void onWorker() {
-        ShopWorker searchWorker = new ShopWorker();
+        ShopWorker searchWorker = new ShopWorker(new WebClient());
         if (webServer == null) {
             webServer = new WebServer(port, searchWorker);
             webServer.startServer();
