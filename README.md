@@ -1,6 +1,25 @@
 # dissys
 Distributed Systems Fall 2021 - Group 17 
 
+# Simple ZooKeeper election algorithm
+
+## Install and run ZooKeeper
+
+Download Apache Zookeeper and place it in a folder of your choosing. Next steps:
+
+- create a folder for logs, for example in `zookeeper-path/logs`
+- go to the `zookeeper-path/conf/` folder and rename `zoo.sample.cfg`. Open the file and change `dataDir=zookeeper-path/logs` and check that `clientPort=2181`. Save and close file.
+- go to the `zookeeper-path/bin` folder and start up Zookeeper by running `./zkServer.sh start`
+
+Now you have Zookeeper running.
+
+## Build and run the Zookeeper election program
+
+Go to the project directory and run `mvn clean package`. Then, you can run the program by `java -jar target/ddharkka1-1.0-SNAPSHOT-jar-with-dependencies.jar`.
+
+Test it by opening 4 terminals and run the program in each. Kill the leader and you will see the next smallest znode to be the new leader. Kill any znode another one is watching and you will see the watcher change it's target znode.
+
+
 ## Meeting notes 13.11.2021
 Present: Kari, Ossi
 
