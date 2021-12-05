@@ -77,6 +77,7 @@ public class ServiceRegistry implements Watcher {
 
         for (String worker : workers) {
             String serviceFullpath = serviceRegistryZnode + "/" + worker;
+            System.out.println(serviceFullpath);
             Stat stat = zooKeeper.exists(serviceFullpath, false);
             if (stat == null) {
                 continue;

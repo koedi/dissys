@@ -1,3 +1,4 @@
+import cluster.management.Lock;
 import cluster.management.OnElectionCallback;
 import cluster.management.ServiceRegistry;
 import networking.WebClient;
@@ -13,14 +14,17 @@ import java.net.UnknownHostException;
 public class OnElectionAction implements OnElectionCallback {
     private final ServiceRegistry workersServiceRegistry;
     private final ServiceRegistry coordinatorsServiceRegistry;
+    private final Lock lock;
     private final int port;
     private WebServer webServer;
 
     public OnElectionAction(ServiceRegistry workersServiceRegistry,
                             ServiceRegistry coordinatorsServiceRegistry,
+                            Lock lock,
                             int port) {
         this.workersServiceRegistry = workersServiceRegistry;
         this.coordinatorsServiceRegistry = coordinatorsServiceRegistry;
+        this.lock = lock;
         this.port = port;
     }
 
@@ -49,7 +53,7 @@ public class OnElectionAction implements OnElectionCallback {
 
     @Override
     public void onWorker() {
-        ShopWorker searchWorker = new ShopWorker(new WebClient());
+        ShopWorker searchWorker = new ShopWorker(new WebClient(), lock);
         if (webServer == null) {
             webServer = new WebServer(port, searchWorker);
             webServer.startServer();

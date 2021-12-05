@@ -8,6 +8,7 @@ import org.apache.zookeeper.KeeperException;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
+import cluster.management.Lock;
 import cluster.management.ServiceRegistry;
 import model.SerializationUtils;
 import model.StatusRequest;
@@ -23,9 +24,10 @@ public class ShopWorker implements OnRequestCallback {
     private static final String STATUS_ENDPOINT = "/task/info";
     private static final String DB_URL = "http://localhost:9001/orders";
     private final WebClient client;
-
-    public ShopWorker(WebClient client) {    
+    private final Lock lock;
+    public ShopWorker(WebClient client, Lock lock) {    
         this.client = client;
+        this.lock = lock;
     }
     
     public byte[] handleTaskRequest(byte[] requestPayload) {
@@ -44,15 +46,36 @@ public class ShopWorker implements OnRequestCallback {
     	System.out.println(String.format("Worker received order for %d items", task.getItemsPurchased()));
     	
         CompletableFuture<TaskResponse> storageFuture = new CompletableFuture<>();
-
+        String writeLock = "";
         byte[] payload = SerializationUtils.serialize(task);
         storageFuture = client.sendTask(DB_URL, payload);
-
         TaskResponse result = new TaskResponse();
+        // System.out.println("Trying to get lock");
+        try {
+            writeLock = lock.aquireWriteLock();
+        } catch (KeeperException | InterruptedException e) {
+            // System.out.println("error on creating a lock");
+            System.out.println("error");
+            return result;
+        }
+
+        
+
         try {
             result = storageFuture.get();
-        } catch (InterruptedException | ExecutionException e) {
+            
+        } catch (Exception e) {
+            try {
+                lock.releaseWriteLock(writeLock);
+            } catch (InterruptedException | KeeperException er) {
+            }
         }
+
+        try {
+            lock.releaseWriteLock(writeLock);
+        } catch (InterruptedException | KeeperException e) {
+        }
+        
 
         return result;
     }
