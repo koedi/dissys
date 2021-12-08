@@ -38,7 +38,13 @@ public class RequestHandler implements OnRequestCallback {
         TaskResponse result = new TaskResponse();
         result.setItemsPurchased(task.getItemsPurchased());
         result.setItemsAvailable(storage.getBananas());
-
+        
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+        
         return result;
     }
 

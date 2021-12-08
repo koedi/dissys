@@ -48,7 +48,7 @@ public class LeaderElection implements Watcher {
                 predecessorStat = zooKeeper.exists(ELECTION_NAMESPACE + "/" + predecessorZnodeName, this);
             }
         }
-        onElectionCallback.onWorker();
+        onElectionCallback.onWorker(zooKeeper);
         System.out.println("Watching znode " + predecessorZnodeName);
         System.out.println();
     }

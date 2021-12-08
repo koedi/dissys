@@ -25,11 +25,13 @@ public class ShopCoordinator implements OnRequestCallback {
     private final ServiceRegistry workersServiceRegistry;
     private final WebClient client;
     private final Random random;
+    private int prevWorker;
     
     public ShopCoordinator(ServiceRegistry workersServiceRegistry, WebClient client) {
         this.workersServiceRegistry = workersServiceRegistry;
         this.client = client;
         this.random = new Random();
+        this.prevWorker = 0;
     }
 
     public byte[] handleTaskRequest(byte[] requestPayload) {
@@ -75,8 +77,13 @@ public class ShopCoordinator implements OnRequestCallback {
         }
         
     	int randomIndex = random.nextInt(workers.size());
-        String worker = workers.get(randomIndex);
+    	this.updatePrevWorker(workers.size());
+        String worker = workers.get(prevWorker);
         return worker;
+    }
+    
+    private void updatePrevWorker(int workersCount) {
+    	this.prevWorker = this.prevWorker + 1 < workersCount ? this.prevWorker + 1 : 0; 
     }
     
     private String checkWorkerStatus(String worker) {

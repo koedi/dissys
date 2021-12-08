@@ -1,9 +1,11 @@
 package cluster.management;
 
+import org.apache.zookeeper.ZooKeeper;
+
 public interface OnElectionCallback {
 
     void onElectedToBeLeader();
 
-    void onWorker();
+    void onWorker(ZooKeeper zooKeeper);
 
 }

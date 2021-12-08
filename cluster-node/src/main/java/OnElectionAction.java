@@ -6,6 +6,7 @@ import shop.ShopCoordinator;
 import shop.ShopWorker;
 
 import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.ZooKeeper;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -48,8 +49,8 @@ public class OnElectionAction implements OnElectionCallback {
     }
 
     @Override
-    public void onWorker() {
-        ShopWorker searchWorker = new ShopWorker(new WebClient());
+    public void onWorker(ZooKeeper zooKeeper) {
+        ShopWorker searchWorker = new ShopWorker(new WebClient(), zooKeeper);
         if (webServer == null) {
             webServer = new WebServer(port, searchWorker);
             webServer.startServer();
