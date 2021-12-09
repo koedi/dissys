@@ -31,11 +31,9 @@ public class WebServer {
 
         HttpContext statusContext = server.createContext(STATUS_ENDPOINT);
         HttpContext taskContext = server.createContext(requestCallback.getEndpoint());
-        HttpContext infoContext = server.createContext(requestCallback.getStatusEndpoint());
 
         statusContext.setHandler(this::handleStatusCheckRequest);
         taskContext.setHandler(this::handleTaskRequest);
-        infoContext.setHandler(this::handleInfoRequest);
 
         server.setExecutor(Executors.newFixedThreadPool(8));
         server.start();
@@ -52,17 +50,6 @@ public class WebServer {
         sendResponse(responseBytes, exchange);
     }
     
-    private void handleInfoRequest(HttpExchange exchange) throws IOException {
-        if (!exchange.getRequestMethod().equalsIgnoreCase("post")) {
-            exchange.close();
-            return;
-        }
-
-        byte[] responseBytes = requestCallback.handleInfoRequest(exchange.getRequestBody().readAllBytes());
-
-        sendResponse(responseBytes, exchange);
-    }
-
     private void handleStatusCheckRequest(HttpExchange exchange) throws IOException {
         if (!exchange.getRequestMethod().equalsIgnoreCase("get")) {
             exchange.close();

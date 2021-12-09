@@ -6,7 +6,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 
-import model.StatusResponse;
 import model.SerializationUtils;
 import model.TaskResponse;
 
@@ -29,15 +28,5 @@ public class WebClient {
                 .thenApply(HttpResponse::body)
                 .thenApply(responseBody -> (TaskResponse) SerializationUtils.deserialize(responseBody));
     }
-    
-    public CompletableFuture<StatusResponse> requestInfo(String url, byte[] requestPayload) {
-        HttpRequest request = HttpRequest.newBuilder()
-        		.POST(HttpRequest.BodyPublishers.ofByteArray(requestPayload))
-                .uri(URI.create(url))
-                .build();
-
-        return client.sendAsync(request, HttpResponse.BodyHandlers.ofByteArray())
-                .thenApply(HttpResponse::body)
-                .thenApply(responseBody -> (StatusResponse) SerializationUtils.deserialize(responseBody));
-    }
+   
 }
