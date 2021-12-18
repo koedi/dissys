@@ -19,7 +19,7 @@ The app consists of a cluster node (program for coordinator and worker nodes), s
 
 Open up a terminal, go to the project directory `cluster-node` and Run `mvn clean package`. Then, you can start up your first node with 
 
-`java -jar target/distributed-shop-1.0-SNAPSHOT-jar-with-dependencies.jar 8081`.
+`java -jar target/distributed.shop-1.0-SNAPSHOT-jar-with-dependencies.jar 8081`.
 
 Note, that we set port 8081 for the node.
 
