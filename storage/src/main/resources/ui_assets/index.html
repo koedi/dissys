@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Distributed Banana Shop</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="ui_assets/style.css">
+    <script type="text/javascript" src="ui_assets/javascript.js"></script>
+</head>
+<body>
+<div id="layout">
+    <h1>Banana shop</h1>
+    <div>
+        <label for="num_items">How many bananas you want to buy:</label> 
+        <input type="text" name="num_items" id="num_items" class="num_input">
+    </div>
+    <br/>
+    <div>
+        <button id="submit_button">Purchase</button>
+    </div>
+    <div id="no_results_error"><br/>There were no results.</div>
+    <div id="results">
+        <table>
+            <thead>
+            <tr>
+                <th>Bananas purchased</th>
+                <th>Bananas available</th>
+            <tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
